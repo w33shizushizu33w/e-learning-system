@@ -1,3 +1,4 @@
+<% provide(:title, "About Us") %>
 <div class="jumbotron mt-4 alert alert-light offset-md-2 col-md-8 offset-md-2">
 
 <h1 class="text-center mt-4">Hello everyone!!</h1>
@@ -10,12 +11,12 @@
       <p>It can be used for Eiken and TOEIC test preparation. </p>
       <p>You can also connect with your friends and see each other's progress. Let's study while encouraging each other!</p>
       <p>Have a good time.</p>
-      <img src="home_imag.jpg" width="220" height="150">
+      <%= image_tag "home_imag.jpg", class: "d-block mx-auto img-fluid w-100" %>
     </div>
   </div>
 
-  <div class="card" style="width: 18rem; col-4">
-    <img src="about.webp">
+  <div class="card " style="width: 18rem; col-4">
+    <%= image_tag "about.webp", class: "d-block mx-auto img-fluid w-100" %>
       <div class="card-body">
         <p class="card-text text-center"><strong>Those who learn create the future!</strong></p>
         <p>What are your dreams for the future? It is very important to learn and deepen your knowledge about your interests.

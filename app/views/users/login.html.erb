@@ -1,7 +1,7 @@
 <% provide(:title, 'Login') %>
 <div class="form content">
-    <h1 class="text-center mt-5">Login</h1>
-    <div class="container">
+   <h1 class="text-center">Login</h1>
+   <div class="container">
        <%= form_for(:session, url: sessions_path) do |f| %>
            <%= f.label :email %>
            <%= f.text_field :email, class: "form-control" %>
@@ -14,3 +14,4 @@
        <p>New here? <%= link_to "Sign up now!", signup_path %></p>
    </div>
 </div>
+

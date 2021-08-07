@@ -20,5 +20,8 @@
  $favorite-color: #f7f6c2;
 
  body {
-     background-color: $favorite-color;
+     background-image: url(background.jpeg);
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: cover;
  }
