@@ -1,6 +1,19 @@
- <div class="jumbotron mt-4 alert alert-warning offset-md-2 col-md-8 offset-md-2">
-    <h1 class="text-center"><strong>!!Enjoy Learning!!</strong></h1>
-     <p class="text-center">~ Aim to be a master of English ~</p>
-      <img class="d-block mx-auto col-8"
-         src="home_pic.webp" width="500" height="300">
- </div>
+ <% provide(:title, "Home") %>
+ <div>
+    <h1 class="text-center mt-5"><strong>!!Enjoy Learning!!</strong></h1>
+        <p class="text-center">~ Aim to be a master of English ~</p>
+ </div> 
+<div class="card bg-light text-dark justify-content-start offset-2 col-8 offset-2">
+    <%= image_tag "home_pic.webp", class: "justify-content-start offset-2 col-8 offset-2" %>
+        <div class="card-img-overlay">
+            <% if logged_in? %>
+                <p class="mt-md-5">get out?</p>
+                <%= link_to "Log out", logout_path, class: "btn btn-outline-secondary w-50", method: "delete" %>
+            <% else %>
+                <p class="mt-4">New here?</p>
+                 <%= link_to "Sign up", signup_path, class: "btn btn-outline-success w-50" %>
+                <p class="mt-4">Already have an account?</p>
+                <%= link_to "Log in", login_path, class: "btn btn-outline-warning w-50" %>
+            <% end %>
+        </div>
+</div>
