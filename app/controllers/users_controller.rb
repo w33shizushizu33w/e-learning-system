@@ -14,9 +14,13 @@ class UsersController < ApplicationController
         end
     end
 
+    def index
+        @user = User.all
+        @users = User.paginate(page: params[:page], per_page: 5 )
+    end
+
     def show
         @user = User.find(params[:id])
-
     end
     
     def destroy
