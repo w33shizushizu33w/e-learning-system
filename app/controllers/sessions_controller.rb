@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
         log_in user
         redirect_to user
       else
+        flash[:danger] = "Login faled"
         render "new"
-        flash.now[:danger] = "Login faled"
       end
   end
     
