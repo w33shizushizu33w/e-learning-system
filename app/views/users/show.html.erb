@@ -9,14 +9,7 @@
     </section>
   </aside>
 
-  <div class="col-6">
+      <h3>User Activity</h3>
       
-      <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-        <ol>
-           <%= render @microposts %>
-        </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
   </div>
 </div>
