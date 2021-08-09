@@ -1,0 +1,12 @@
+<div class="container">
+    <%= form_for(@micropost) do |f| %>
+        <div class="field">
+            <%= f.text_area :content,
+            placeholder: "Compose a new micropost...", class: "w-100" %>
+        </div>
+        <div class="text-center">
+            <%= link_to raw("<i class='fas fa-pastafarianism text-danger'></i>"), class: "btn btn-block btn-primary" %> 
+            <strong class="text-info">{Post!!</strong>
+        </div>
+    <% end %>  
+</div>

@@ -1,4 +1,8 @@
 module SessionsHelper
+    def only_loggedin_users
+        redirect_to login_url unless logged_in? #ログインしていない時にはlogin_urlを表示させる
+    end
+    
     def log_in(user)
         session[:user_id] = user.id
     end
