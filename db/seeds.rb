@@ -2,7 +2,7 @@ User.create!(name: "SHIZUE",
     email: "email@email.com",
     password: "123abc456def",
     password_confirmation: "123abc456def",
-    is_admin = 1)
+    is_admin: 1)
 
 50.times do |n|
     name = Faker::Name.name
@@ -12,7 +12,7 @@ User.create!(name: "SHIZUE",
     User.create!(name: name,
                 email: email,
                 password: password,
-                password_confirmation: password
-                admin: is_admin)
+                password_confirmation: password,
+                is_admin: is_admin)
 
 end   
