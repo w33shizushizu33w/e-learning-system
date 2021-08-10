@@ -16,6 +16,8 @@
            <%= f.password_field :password_confirmation, class: "form-control" %>
 
            <%= f.submit "Create my account", class: "btn btn-block btn-primary" %>
+           <%= f.hidden_field :is_admin, value: 0 %>
        <% end %>
    </div>
 </div>
+
