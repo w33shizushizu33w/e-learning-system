@@ -25,12 +25,24 @@ class UsersController < ApplicationController
     
     def destroy
         User.find(params[:id]).destroy
-        redirect_to user_url
+        redirect_to user_path
     end
      
     def edit
         @user = User.find(params[:id])
     end
+
+    def update
+        @user = User.find(params[:id])
+        if @user.update_attributes(user_params)
+           flash[:session] = "Saved Successfully"
+           redirect_to @user
+        else
+           flash[:danger] = "Invalid content. Try Again."
+           render 'edit'
+        end
+    end
+    
 private
 
     def user_params
