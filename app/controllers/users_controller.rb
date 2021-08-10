@@ -31,6 +31,17 @@ class UsersController < ApplicationController
     def edit
         @user = User.find(params[:id])
     end
+
+    def update
+        @user = User.find(params[:id])
+        if @user.update_attributes(user_params)
+           flash[:session] = "Saved Successfully"
+           redirect_to @user
+        else
+           flash[:danger] = "Invalid content. Try Again."
+           render 'edit'
+        end
+    end
     
 private
 
