@@ -1,0 +1,7 @@
+<%= provide(:title, "index") %>
+<div class="text-center">
+    <h1>Lessons</h1>
+</div>
+<% @category.each do |category| %>
+    <%= link_to category.title, category %>
+<% end %>    

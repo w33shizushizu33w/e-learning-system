@@ -11,6 +11,11 @@
             <li class="nave-item">
                 <%= link_to "Contact", contact_path, class: "nav-link" %>
             </li>
+          <% if current_user.is_admin? %>
+            <li class="nave-item">
+                <%= link_to "Create", create_path, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
     <div class="form-inline my-2 my-lg-0">
        <ul class="navbar-nav mr-5">
