@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :category
+  resources :categories
 
 
   root "static_pages#home"
@@ -11,6 +11,5 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new"
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
-  get "/create", to: "category#new"
-  get "/new", to:"category#index"
+
 end

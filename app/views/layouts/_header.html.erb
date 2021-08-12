@@ -13,7 +13,7 @@
             </li>
           <% if logged_in? && current_user.is_admin? %>
             <li class="nav-item">
-                <%= link_to "Create", create_path, class: "nav-link" %>
+                <%= link_to "Create new category", new_category_path, class: "nav-link" %>
             </li>
           <% end %>
         </ul>

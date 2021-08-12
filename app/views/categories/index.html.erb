@@ -2,6 +2,9 @@
 <div class="text-center">
     <h1>Lessons</h1>
 </div>
+<div class="row d-flex justify-content-center">
+    <%= will_paginate @category%>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -16,10 +19,16 @@
       <% @category.each do |category| %>
         <tr>
           <td><%= category.id %></td>
-          <td><%= category.title %></td>
+          <td><%= link_to category.title %></td>
           <td><%= category.description %></td>
+          <td><%= link_to "edit", categories_path %></td>
+          <td><%= link_to "delete", categories_path, method: :delete, data: { confirm: "You sure?" } %></td>
         </tr>
           <% end %>
   </tbody>
 </table>
+<div class="row d-flex justify-content-center">
+    <%= will_paginate @category%>
+    
+</div>
         
