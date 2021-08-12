@@ -24,12 +24,16 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
-    if @category.save
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update_attributes(category_params)
       flash[:success] = "Saved Successfully"
       redirect_to categories_path
     else
       flash[:danger] = "Editing failed"
-      render "create"
+      render "edit"
     end
   end
 

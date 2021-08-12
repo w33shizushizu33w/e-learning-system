@@ -5,6 +5,7 @@
 <div class="row d-flex justify-content-center">
     <%= will_paginate @category%>
 </div>
+<div class="container">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -21,12 +22,15 @@
           <td><%= category.id %></td>
           <td><%= link_to category.title %></td>
           <td><%= category.description %></td>
-          <td><%= link_to "edit", categories_path %></td>
-          <td><%= link_to "delete", categories_path, method: :delete, data: { confirm: "You sure?" } %></td>
+        <% if logged_in? && current_user.is_admin? %> 
+          <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_path(category) %></td>
+          <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), category, method: :delete, data: { confirm: "You sure?" } %></td>
+        <% end %>
         </tr>
-          <% end %>
+      <% end %>
   </tbody>
 </table>
+</div>
 <div class="row d-flex justify-content-center">
     <%= will_paginate @category%>
     
