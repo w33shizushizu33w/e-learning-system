@@ -1,0 +1,11 @@
+<div class="container">
+       <%= form_for(@category) do |f| %>
+           <%= f.label :Title %>
+           <%= f.text_field :title, class: "form-control" %>
+
+           <%= f.label :Description %>
+           <%= f.text_field :description, class: "form-control" %>
+
+           <%= f.submit class: "btn btn-outline-danger w-50 offset-3 col-9 offset-2 mt-4" %>
+       <% end %>
+</div> 

@@ -15,3 +15,10 @@ User.create!(name: "SHIZUE",
                 is_admin: false)
 
 end   
+
+30.times do |n|
+    title = Faker::Food.fruits
+    description = Faker::Food.description
+    Category.create!(title: title, 
+                     description: description)
+  end
