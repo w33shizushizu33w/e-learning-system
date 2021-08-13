@@ -1,0 +1,20 @@
+<% provide(:title, "Categories List") %>
+<div class="text-center mt-4">
+    <h1>Categories List</h1>
+</div>
+
+<div class="col text-center mt-4">
+    <button type="button" class="btn btn-outline-secondary w-25">All</button>
+    <button type="button" class="btn btn-outline-success w-25">Learned / In progress</button>
+    <button type="button" class="btn btn-outline-danger w-25">Not touched yet</button>
+</div>
+
+<div class="row mt-5 mx-auto container">
+        <% @category.each do |category| %>
+          <div class="card text-center ml-5 my-5" style="width: 18rem;">
+                <div class="card-header"><%= link_to category.title %></div>
+                <h5 class="card-title"><%= category.description %></h5>
+                <%= link_to "Start lesson", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+</div>
