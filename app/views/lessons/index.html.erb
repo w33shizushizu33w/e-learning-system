@@ -10,13 +10,20 @@
 </div>
 
 <div class="row mt-5 mx-auto container">
+    <div class="row">
         <% @category.each do |category| %>
-          <div class="card text-center mx-auto my-5" style="width: 18rem;">
-                <div class="card-header"><%= link_to category.title %></div>
-                <h5 class="card-title"><%= category.description %></h5>
-                <div class="text-right">
-                <%= link_to "Start lesson", href="#", class: "btn btn-primary w-50" %>
+        <div class="card text-center mx-auto my-3" style="width: 18rem;">
+            <h5 class="card-header"><%= category.title %></h5>
+            <div class="card-body">
+                <h5 class="card-text"><%= category.description %></h5>
+                <div class="text-right mt-3">
+                    <%= link_to "Start lesson", href="#", class: "btn btn-primary" %>
                 </div>
-          </div>
+            </div>
+        </div>
         <% end %>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <%= will_paginate @category %>
+  </div>
 </div>
