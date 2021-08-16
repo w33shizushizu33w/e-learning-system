@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   resources :categories
   resources :lessons
 
+  resources :admins do
+    collection do
+      get "dashboard"
+      get "categories"
+    end
+  end
+
   root "static_pages#home"
   get "static_pages/home"
   get "/about", to: "static_pages#about"

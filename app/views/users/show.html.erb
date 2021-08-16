@@ -1,15 +1,25 @@
 <% provide(:title, @user.name) %>
-<div class="row ml-5 mt-4">
-  <aside class="span">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-    <div class="col-6">
-      <h3>User Activity</h3>
-    </div> 
+<div class="row mt-5 mx-auto justify-content-center">
+  <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+    <div class="card-header text-center"><strong>User Information</strong></div>
+      <div class="card-body">
+        <h5 class="card-title text-center"><%= gravatar_for @user %></h5>
+        <h4 class="text-center"><%= @user.name %></h4>
+      <% if logged_in? && current_user.is_admin? %>
+        <div class="text-center">
+         <%= link_to "Admin Dashbourd", dashboard_admins_path, class: "btn btn-outline-success" %>
+        </div>
+      <% end %>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
   </div>
+    <div class="ml-5">
+      <div class="card text-white bg-success mb-3" style="max-width: 60rem;">
+        <div class="card-header text-center"><strong>User Activity</strong></div>
+          <div class="card-body">
+            <h5 class="card-title">Danger card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+      </div>
+    </div>      
 </div>
