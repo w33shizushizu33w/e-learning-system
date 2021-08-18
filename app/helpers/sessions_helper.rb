@@ -1,6 +1,5 @@
 module SessionsHelper
-    before_action :is_admin?
-    
+
     def only_loggedin_users
         redirect_to login_url unless logged_in? #ログインしていない時にはlogin_urlを表示させる
     end
@@ -24,10 +23,16 @@ module SessionsHelper
         if session[:user_id]
           @current_user ||= User.find_by(id: session[:user_id])
         end
+
     end
 
     def log_out
         session.delete(:user_id)
         @current_user = nil
     end
+
+    def is_admin?(user)
+        user == current_user 
+    end
+
 end
