@@ -21,7 +21,7 @@
       <% @category.each do |category| %>
         <tr>
           <td><%= category.id %></td>
-          <td><%= link_to category.title, admins_path %></td>
+          <td><%= link_to category.title, words_path(category) %></td>
           <td><%= category.description %></td>
         <% if logged_in? && current_user.is_admin? %> 
           <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_path(category) %></td>

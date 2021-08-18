@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :lessons
 
-  resources :words do
-    collection do
-      get "dashboard"
-      get "categories"
+  resources :categories do
+    member do
+      resources :words
     end
   end
 

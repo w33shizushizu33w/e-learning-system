@@ -21,6 +21,9 @@ class WordsController < ApplicationController
     
       def index
         @word = Word.all
+        @question = Category.joins("JOIN categories ON words.category_id = categories.id")
+                            .select("*, words.content")
+                            .where("content = 1")
         @word = Word.paginate(page: params[:page], per_page: 5 )
       end
     
