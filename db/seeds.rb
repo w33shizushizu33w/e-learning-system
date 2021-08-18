@@ -23,9 +23,3 @@ end
                      description: description)
   end
 
-10.times do |n|
-    word = Faker::Food.fruits
-    answer = Faker::Food.fruits
-    Admin.create!(word: word,
-                  answer: answer)
-end

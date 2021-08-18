@@ -1,16 +1,16 @@
     <div class="card" style="width: 10rem; height: 10rem">
         <div class="card-header">
-            <%= link_to "Dashboard", dashboard_admins_path %>
+            <%= link_to "Dashboard", dashboard_words_path %>
         </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <%= link_to "Categories", categories_admins_path %>
+                    <%= link_to "Categories", categories_words_path %>
                 </li>
                 <li class="list-group-item">
                     <%= link_to "Users" %>
                 </li>
-                <li class="list-group-item">
-                    <%= link_to "Back", :back %>
+                <li class="list-group-item text-center">
+                    <%= link_to "Back", :back, class: "btn btn-outline-info w-10" %>
                 </li>
             </ul>
     </div>

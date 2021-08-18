@@ -5,7 +5,7 @@
             <div class="card text-primary bg-light" style="width: 60rem;">
                 <div class="row card-header">
                     <h3 class="offset-1">Words for the lessons</h3>
-                    <%= link_to "Create new word", href="#", class: "btn btn-outline-danger offset-md-5" %>
+                    <%= link_to "Create new word", new_word_path, class: "btn btn-outline-danger offset-md-5" %>
                 </div>
                 <div class="card-body">
                     <div class="container">
@@ -20,13 +20,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <% @admin.each do |admin| %>
+                            <% @word.each do |word| %>
                                 <tr>
-                                    <td><%= admin.id %></td>
-                                    <td><%= admin.word %></td>
-                                    <td><%= admin.answer %></td>
-                                    <td><%= admin.created_at.to_date%>
-                              <% if logged_in? && current_user.is_admin? %> 
+                                    <td><%= word.id %></td>
+                                    <td><%= word.word %></td>
+                                    <td><%= word.answer %></td>
+                                    <td><%= word.created_at.to_date%>
+                              <% if logged_in? && current_user.is_word? %> 
                                     <td><%= link_to raw("<i class='fas fa-pen text-success'></i>") %></td>
                                     <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), method: :delete, data: { confirm: "You sure?" } %></td>
                               <% end %>
@@ -40,5 +40,5 @@
         </div>
 </div>
 <div class="row d-flex justify-content-center mt-3">
-    <%= will_paginate @admin%>   
+    <%= will_paginate @word%>   
 </div>

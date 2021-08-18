@@ -1,0 +1,59 @@
+<div class="row mt-4 mx-auto container">
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="dashboards" role="tab" aria-controls="v-pills-home" aria-selected="true">Categories</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active">
+
+        <div class="card">
+          <div class="card-header">
+            Categories
+            <%= link_to "Create new category", new_category_path, class: "btn btn-outline-danger w-40 offset-8" %>
+          </div>
+          <div class="card-body">
+            <div class="container">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Created Date</th>
+                    <th colspan="4"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @category.each do |category| %>
+                    <tr>
+                      <td><%= category.id %></td>
+                      <td><%= link_to category.title %></td>
+                      <td><%= category.description %></td>
+                      <td><%= category.created_at.to_date%></td>
+                    <% if logged_in? && current_user.is_admin? %> 
+                      <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_path(category) %></td>
+                      <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), category, method: :delete, data: { confirm: "You sure?" } %></td>
+                    <% end %>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+              <div class="row d-flex justify-content-center">
+                <%= will_paginate @category%>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+    </div>
+  </div>
+</div>
