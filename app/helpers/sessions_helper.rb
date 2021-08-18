@@ -1,4 +1,6 @@
 module SessionsHelper
+    before_action :is_admin?
+    
     def only_loggedin_users
         redirect_to login_url unless logged_in? #ログインしていない時にはlogin_urlを表示させる
     end
