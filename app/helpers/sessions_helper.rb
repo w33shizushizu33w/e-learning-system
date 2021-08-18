@@ -31,8 +31,8 @@ module SessionsHelper
         @current_user = nil
     end
 
-    def is_admin?(user)
-        user == current_user 
+    def is_admin?
+        current_user.is_admin?
     end
 
 end
