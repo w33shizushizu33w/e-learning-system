@@ -24,10 +24,26 @@ class WordsController < ApplicationController
       end
     
       def edit
+        @word = Word.find_by(params[:id])
+      end
+
+      def update
+        @word = Word.find_by(params[:id])
+        if @word.update_attributes(word_params)
+          flash[:success] = "Saved Successfully"
+          redirect_to words_path
+        else
+          flash[:danger] = "Editing failed"
+          render "edit"
+        end
       end
     
       def show
-        
+      end
+
+      def destroy
+        Word.find_by(params[:id]).destroy
+        redirect_to words_path
       end
     
       def dashboard

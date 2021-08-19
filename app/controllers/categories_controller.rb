@@ -25,11 +25,11 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = Category.find_by(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
+    @category = Category.find_by(params[:id])
     if @category.update_attributes(category_params)
       flash[:success] = "Saved Successfully"
       redirect_to categories_path
@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    Category.find(params[:id]).destroy
+    Category.find_by(params[:id]).destroy
     redirect_to categories_path
   end
 

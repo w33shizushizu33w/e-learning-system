@@ -12,7 +12,6 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Word</th>
                                     <th scope="col">Answer</th>
                                     <th scope="col">Created date</th>
@@ -22,7 +21,6 @@
                             <tbody>
                             <% @word.each do |word| %>
                                 <tr>
-                                    <td><%= word.id %></td>
                                     <td><%= word.content %></td>
                                     <td>
                                         <% for choice in word.choices%>
@@ -33,8 +31,8 @@
                                     </td>
                                     <td><%= word.created_at.to_date%>
                               <% if logged_in? && is_admin? %> 
-                                    <td><%= link_to raw("<i class='fas fa-pen text-success'></i>") %></td>
-                                    <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), method: :delete, data: { confirm: "You sure?" } %></td>
+                                    <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_word_path %></td>
+                                    <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), words_path, method: :delete, data: { confirm: "You sure?" } %></td>
                               <% end %>
                                 </tr>
                             <% end %>

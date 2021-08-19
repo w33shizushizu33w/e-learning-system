@@ -12,7 +12,6 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Created Date</th>
@@ -22,13 +21,12 @@
                         <tbody>
                         <% @category.each do |category| %>
                             <tr>
-                                <td><%= category.id %></td>
                                 <td><%= link_to category.title, words_path %></td>
                                 <td><%= category.description %></td>
                                 <td><%= category.created_at.to_date%></td>
                           <% if logged_in? && current_user.is_admin? %> 
                                 <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_path(category) %></td>
-                                <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), category, method: :delete, data: { confirm: "You sure?" } %></td>
+                                <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), categories_path, method: :delete, data: { confirm: "You sure?" } %></td>
                           <% end %>
                             </tr>
                         <% end %>

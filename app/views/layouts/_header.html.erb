@@ -16,11 +16,6 @@
                 <%= link_to "Start lessons", lessons_path, class: "nav-link" %>
             </li>
           <% end %>
-          <% if logged_in? && current_user.is_admin? %>
-            <li class="nav-item">
-                <%= link_to "Create new category", new_category_path, class: "nav-link" %>
-            </li>
-          <% end %>
         </ul>
     <div class="form-inline my-2 my-lg-0">
        <ul class="navbar-nav mr-5">
