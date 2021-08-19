@@ -2,14 +2,4 @@
 <div class="text-center mt-4">
     <h1>Create a new word</h1>
 </div>
-<div class="container">
-  <%= form_for(@word) do |f| %>
-           <%= f.label :Word %>
-           <%= f.text_field :word, class: "form-control" %>
-
-           <%= f.label :Answer %>
-           <%= f.text_field :answer, class: "form-control" %>
-
-           <%= f.submit "Create Word", class: "btn btn-outline-danger w-50 offset-3 col-9 offset-2 mt-4" %>
-  <% end %>
-</div>
+<%= render 'form' %>

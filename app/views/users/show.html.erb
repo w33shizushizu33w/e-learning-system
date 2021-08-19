@@ -7,7 +7,7 @@
         <h4 class="text-center"><%= @user.name %></h4>
       <% if logged_in? && current_user.is_admin? %>
         <div class="text-center">
-         <%= link_to "Admin Dashbourd", words_path, class: "btn btn-outline-success" %>
+         <%= link_to "Admin Dashbourd", categories_path, class: "btn btn-outline-success" %>
         </div>
       <% end %>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

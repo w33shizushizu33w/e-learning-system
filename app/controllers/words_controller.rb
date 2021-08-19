@@ -1,6 +1,7 @@
 class WordsController < ApplicationController
     def new
         @word = Word.new
+        3.times{ @word.choices.build }
       end
     
       def create
@@ -10,13 +11,8 @@ class WordsController < ApplicationController
           redirect_to words_path
         else
           flash[:danger] = "Creating failed"
-          render "create"
+          render "new"
         end
-        
-        choice = correct_word.choices.build(word_id: params[:word_id])
-        choice.save
-        redirect_to words_path
-
       end
     
       def index
@@ -44,11 +40,7 @@ class WordsController < ApplicationController
     private
     
     def word_params
-      params.require(:word).permit(:category_id, :content, choices_attributes:[:word_id, :content, :correct])
-    end
-    
-    def correct_word
-      @word = Word.find(params[:id])
+      params.require(:word).permit(:category_id, :content, choices_attributes:[:id, :word_id, :content, :correct])
     end
     
 end

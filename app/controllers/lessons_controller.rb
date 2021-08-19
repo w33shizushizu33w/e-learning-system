@@ -6,13 +6,10 @@ class LessonsController < ApplicationController
                       .select("categories.*, lessons.result")
                       .where("result = 1")
                       .paginate(page: params[:page], per_page: 6 )
-    @not_learned = Category.joins("JOIN lessons ON lessons.category_id = categories.id")
+    @not_learned = Category.joins("LEFT OUTER JOIN lessons ON lessons.category_id = categories.id")
                          .select("*") #*全て
-                         .where("lessons.category_id = null")
+                         .where("category_id = null")
                          .paginate(page: params[:page], per_page: 6 )
-    
-    
-
   end
-
+  
 end
