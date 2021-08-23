@@ -16,11 +16,6 @@
                 <%= link_to "Start lessons", lessons_path, class: "nav-link" %>
             </li>
           <% end %>
-          <% if logged_in? && current_user.is_admin? %>
-            <li class="nav-item">
-                <%= link_to "Create new category", new_category_path, class: "nav-link" %>
-            </li>
-          <% end %>
         </ul>
     <div class="form-inline my-2 my-lg-0">
        <ul class="navbar-nav mr-5">
@@ -31,7 +26,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <% if logged_in? %>
                     <%= link_to "Users List", users_path, class: "dropdown-item" %>
-                    <%= link_to current_user.name , current_user, class: "dropdown-item" %>
+                    <%= link_to "Profile" , current_user, class: "dropdown-item" %>
                     <%= link_to "Settings", edit_user_path(current_user), class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
                     <%= link_to "Logout", logout_path, class: "dropdown-item", method: "delete" %>

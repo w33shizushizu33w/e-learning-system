@@ -22,3 +22,4 @@ end
     Category.create!(title: title, 
                      description: description)
   end
+

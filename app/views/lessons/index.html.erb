@@ -2,28 +2,74 @@
 <div class="text-center mt-4">
     <h1>Categories List</h1>
 </div>
-
-<div class="col text-center mt-4">
-    <button type="button" class="btn btn-outline-secondary w-25">All</button>
-    <button type="button" class="btn btn-outline-success w-25">Learned / In progress</button>
-    <button type="button" class="btn btn-outline-danger w-25">Not touched yet</button>
-</div>
-
-<div class="row mt-5 mx-auto container">
+<div class="row mt-3 mx-auto container">
+<nav>
+  <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <a class="nav-item nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+    <a class="nav-item nav-link" id="learned-tab" data-toggle="tab" href="#learned" role="tab" aria-controls="learned" aria-selected="false">Learned / In progress</a>
+    <a class="nav-item nav-link" id="not_touched-tab" data-toggle="tab" href="#not_touched" role="tab" aria-controls="not_touched" aria-selected="false">Not touched yet</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
     <div class="row">
-        <% @category.each do |category| %>
-        <div class="card text-center mx-auto my-3" style="width: 18rem;">
-            <h5 class="card-header"><%= category.title %></h5>
+      <% @category.each do |category| %>
+      <div class="card text-center mx-auto my-3" style="width: 18rem;">
+        <h5 class="card-header"><%= category.title %></h5>
+        <div class="card-body">
+          <h5 class="card-text"><%= category.description %></h5>
+          <div class="text-right mt-3">
+            <%= link_to "Start lesson", href="#", class: "btn btn-primary" %>
+          </div>
+        </div>
+        </div>
+      <% end %>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <%= will_paginate @category %>
+      </div>    
+    </div>
+    <div class="tab-pane fade" id="learned" role="tabpanel" aria-labelledby="learned-tab">
+      <div class="row">
+        <% @learned.each do |learned| %>
+          <div class="card text-center mx-auto my-3" style="width: 18rem;">
+            <h5 class="card-header"><%= learned.title %></h5>
             <div class="card-body">
-                <h5 class="card-text"><%= category.description %></h5>
+              <h5 class="card-text"><%= learned.description %></h5>
                 <div class="text-right mt-3">
-                    <%= link_to "Start lesson", href="#", class: "btn btn-primary" %>
+                  <%= link_to "Start lesson", class: "btn btn-primary" %>
                 </div>
             </div>
-        </div>
+          </div>
         <% end %>
-  </div>
-  <div class="row d-flex justify-content-center">
-    <%= will_paginate @category %>
+      </div>
+        <div class="row d-flex justify-content-center">
+          <%= will_paginate @learned %>
+        </div> 
+    </div>
+    <div class="tab-pane fade" id="not_touched" role="tabpanel" aria-labelledby="not_touched-tab">
+    
+    <div class="row">
+        <% @not_learned.each do |not_learned| %>
+          <div class="card text-center mx-auto my-3" style="width: 18rem;">
+            <h5 class="card-header"><%= not_learned.title %></h5>
+            <div class="card-body">
+              <h5 class="card-text"><%= not_learned.description %></h5>
+                <div class="text-right mt-3">
+                  <%= link_to "Start lesson", href="#", class: "btn btn-primary" %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+        <div class="row d-flex justify-content-center">
+          <%= will_paginate @not_learned %>
+        </div> 
+    
+    
+    </div>
   </div>
 </div>
+
+
+

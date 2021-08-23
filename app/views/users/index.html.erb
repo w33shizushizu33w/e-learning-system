@@ -1,20 +1,20 @@
 <% provide(:title, 'List of Users') %>
 <div class="container">
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center mt-5">
     <%= will_paginate %>
   </div>
-      <div class="row d-flex justify-content-center">
-        <ul class="users">
+      <div class="row mt-3 mx-auto justify-content-center">
             <% @users.each do |user| %>
-                <li class="my-3">
-                    <%= gravatar_for user, size: 52 %>
-                    <%= link_to user.name, user %>
-                    <%= link_to raw("<i class='fa fa-trash text-danger'></i>"), user_path(user), class: "text-danger", method: :delete, data: { confirm: "You sure?" } unless !current_user?(user)%>
-                </li>
-            <% end %>  
-        </ul>  
+                <div class="card border-success mx-auto my-5" style="width: 20rem;">
+                    <div class="card-body text-success">
+                       <h5 class="card-title"><%= gravatar_for user, size: 52 %><%= link_to user.name, user %></h5>
+                       <%= link_to raw("<i class='fa fa-trash text-danger'></i>"), user_path(user), class: "text-danger", method: :delete, data: { confirm: "You sure?" } unless !current_user?(user)%>
+                    </div>
+                </div>
+            <% end %>    
       </div>
    <div class="row d-flex justify-content-center">
     <%= will_paginate %>
    </div>
 </div>           
+

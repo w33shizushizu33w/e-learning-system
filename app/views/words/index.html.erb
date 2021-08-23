@@ -1,0 +1,49 @@
+<%= provide(:title, "Words") %>
+<div class="row mt-5 mx-auto justify-content-center">
+    <%= render 'menu' %>
+        <div class="ml-5">
+            <div class="card text-primary bg-light" style="width: 60rem;">
+                <div class="row card-header">
+                    <h3 class="offset-1">Words for the <%= @category.title %> lessons</h3>
+                    <%= link_to "Create new word", new_category_word_path, class: "btn btn-outline-danger offset-1" %>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Word</th>
+                                    <th scope="col">Answer</th>
+                                    <th scope="col">Created date</th>
+                                    <th colspan="3"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <% @word.each do |word| %>
+                                <tr>
+                                    <td><%= word.content %></td>
+                                    <td>
+                                        <% for choice in word.choices%>
+                                            <% if choice.correct%> <%#show only answer%>
+                                                <%= choice.content%>
+                                            <% end %>
+                                        <% end %>
+                                    </td>
+                                    <td><%= word.created_at.to_date%>
+                              <% if logged_in? && is_admin? %> 
+                                    <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_word_path(@category.id, word.id) %></td>
+                                    <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"),  category_word_path(@category.id, word.id), method: :delete, data: { confirm: "You sure?" } %></td>
+
+                              <% end %>
+                                </tr>
+                            <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="row d-flex justify-content-center mt-3">
+    <%= will_paginate @word%>   
+</div>

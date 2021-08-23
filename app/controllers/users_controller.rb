@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     def index
         @user = User.all
-        @users = User.paginate(page: params[:page], per_page: 10 )
+        @users = User.paginate(page: params[:page], per_page: 9 )
     end
 
     def show
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     
     def destroy
         User.find(params[:id]).destroy
-        redirect_to user_path
+        redirect_to users_path
     end
      
     def edit
@@ -49,7 +49,7 @@ private
         params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_admin)
     end
 
-    def correct_user
+    def current_user
         @user = User.find(params[:id])
         redirect_to(root_url) unless current_user?(@user)
     end

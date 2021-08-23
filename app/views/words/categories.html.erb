@@ -1,0 +1,42 @@
+<%= provide(:title, "Categories") %>
+<div class="row mt-5 mx-auto justify-content-center">
+    <%= render 'menu' %>
+    <div class="ml-5">
+        <div class="card text-primary bg-light" style="max-width: 60rem;">
+            <div class="row card-header">
+                <h3 class="offset-1">Categories</h3>
+                <%= link_to "Create new category", new_category_path, class: "btn btn-outline-danger offset-md-5" %>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Created Date</th>
+                                <th colspan="4"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% @category.each do |category| %>
+                            <tr>
+                                <td><%= link_to category.title, words_path %></td>
+                                <td><%= category.description %></td>
+                                <td><%= category.created_at.to_date%></td>
+                          <% if logged_in? && current_user.is_admin? %> 
+                                <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_path(category) %></td>
+                                <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), categories_path, method: :delete, data: { confirm: "You sure?" } %></td>
+                          <% end %>
+                            </tr>
+                        <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>
+<div class="row d-flex justify-content-center mt-3">
+    <%= will_paginate @category%>
+</div> 

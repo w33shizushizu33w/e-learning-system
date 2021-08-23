@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :categories
   resources :lessons
+  resources :words
+
+  resources :categories do
+      resources :words
+  end
 
   root "static_pages#home"
   get "static_pages/home"
@@ -11,5 +16,4 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new"
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
-
 end
