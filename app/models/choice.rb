@@ -1,3 +1,4 @@
 class Choice < ApplicationRecord
-    belongs_to :word, dependent: :destroy
+  belongs_to :word
+  validates :content, presence: true, uniqueness: { scope: :word }
 end

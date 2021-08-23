@@ -4,8 +4,8 @@
         <div class="ml-5">
             <div class="card text-primary bg-light" style="width: 60rem;">
                 <div class="row card-header">
-                    <h3 class="offset-1">Words for the lessons</h3>
-                    <%= link_to "Create new word", new_word_path, class: "btn btn-outline-danger offset-md-5" %>
+                    <h3 class="offset-1">Words for the <%= @category.title %> lessons</h3>
+                    <%= link_to "Create new word", new_category_word_path, class: "btn btn-outline-danger offset-1" %>
                 </div>
                 <div class="card-body">
                     <div class="container">
@@ -31,8 +31,9 @@
                                     </td>
                                     <td><%= word.created_at.to_date%>
                               <% if logged_in? && is_admin? %> 
-                                    <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_word_path %></td>
-                                    <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), words_path, method: :delete, data: { confirm: "You sure?" } %></td>
+                                    <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_word_path(@category.id, word.id) %></td>
+                                    <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"),  category_word_path(@category.id, word.id), method: :delete, data: { confirm: "You sure?" } %></td>
+
                               <% end %>
                                 </tr>
                             <% end %>

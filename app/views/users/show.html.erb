@@ -3,7 +3,9 @@
   <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
     <div class="card-header text-center"><strong>User Information</strong></div>
       <div class="card-body">
-        <h5 class="card-title text-center"><%= gravatar_for @user %></h5>
+        <h5 class<div class="container">
+
+</div>="card-title text-center"><%= gravatar_for @user %></h5>
         <h4 class="text-center"><%= @user.name %></h4>
       <% if logged_in? && current_user.is_admin? %>
         <div class="text-center">

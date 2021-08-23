@@ -36,11 +36,11 @@
                       <tbody>
                         <% @category.each do |category| %>
                             <tr>
-                                <td><%= link_to category.title, words_path(category) %></td>
+                                <td><%= link_to category.title, category_words_path(category) %></td>
                                 <td><%= category.description %></td>
                           <% if logged_in? && is_admin? %> 
                                 <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_path(category) %></td>
-                                <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"), categories_path, method: :delete, data: { confirm: "You sure?" } %></td>
+                                <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"),  category_path(category), method: :delete, data: { confirm: "You sure?" } %></td>
                           <% end %>
                              </tr>
                         <% end %>

@@ -5,12 +5,14 @@
            <%= f.text_field :content, class: "form-control" %>
               <%= f.fields_for :choices do |choice| %>
                   <fieldset>
+                    <%= choice.hidden_field :id %>
+                    <%= choice.hidden_field :word_id %>
                       <%= choice.label :content, "Choice", class: "mt-4" %><br/>
                       <%= choice.text_field :content, class: "form-control" %>
                       <%= choice.check_box :correct, class: "left" %>
                       <%= choice.label :content, "Correct Answer" %>
                   </fieldset>
               <% end %>
-           <%= f.submit "Create Word", class: "btn btn-outline-danger w-50 offset-3 col-9 offset-2 mt-4" %>
+           <%= f.submit "Update Word", class: "btn btn-outline-danger w-50 offset-3 col-9 offset-2 mt-4" %>
   <% end %>
 </div>
