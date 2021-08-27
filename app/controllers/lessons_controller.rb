@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   before_action :is_admin?
 
   def index
-    @category = Category.find(params[:id]).paginate(page: params[:page], per_page: 6 )
+    @category = Category.all.paginate(page: params[:page], per_page: 6 )
     @lesson = Lesson.new
     @all_lesson = Lesson.all.paginate(page: params[:page], per_page: 6 )    
     @learned = Lesson.joins("JOIN categories ON lessons.category_id = categories.id")
