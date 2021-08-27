@@ -1,0 +1,46 @@
+<%= provide(:title, "Lesson Result") %>
+<div>
+    <h1 class="text-center mt-4"><%= @category.title %></h1>
+    <p class="text-center">Check your result</p>
+</div>
+
+<div class="card-body">
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Word</th>
+                    <th scope="col">Your Answer</th>
+                    <th scope="col">Correct Answer</th>
+                    <th scope="col">Result</th>
+                    <th colspan="4"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @words.each do |wrd| %>
+                    <% wrd.choices.each do |c| %>
+                        <tr>
+                            <%if c.correct == true %>
+                            <td> <%= wrd.content %> </td>
+                            <td> <%= c.content %> </td>
+                                <% @answers.each do |a| %>
+                                    <% @choices.each do |chs| %>
+                                        <%if chs.id == a.choice_id && wrd.id == a.word_id %>
+                                            <td>  <%= chs.content %> </td>
+                                            <%if chs.id == a.choice_id && wrd.id == a.word_id && a.choice_id == c.id  %>
+                                                <% @count += 1 %>
+                                                <td> <i class="fa fa-check"></i> </td>
+                                            <%else%>
+                                                <td> <i class="fa fa-times"></i> </td>
+                                            <%end%>
+                                        <%end%>
+                                    <% end %>
+                                <% end %>
+                            <%end%>
+                        </tr>
+                    <%end%>
+                <%end%>
+            </tbody>
+        </table>
+    </div>
+</div>

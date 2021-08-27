@@ -30,10 +30,10 @@
                                         <% end %>
                                     </td>
                                     <td><%= word.created_at.to_date%>
-                              <% if logged_in? && is_admin? %> 
-                                    <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_word_path(@category.id, word.id) %></td>
-                                    <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"),  category_word_path(@category.id, word.id), method: :delete, data: { confirm: "You sure?" } %></td>
-
+                                        <% if logged_in? && is_admin? %> 
+                                            <td><%= link_to raw("<i class='fas fa-pen text-success'></i>"), edit_category_word_path(@category.id, word.id) %></td>
+                                            <td><%= link_to raw("<i class='fa fa-trash text-danger'></i>"),  category_word_path(@category.id, word.id), method: :delete, data: { confirm: "You sure?" } %></td>
+                                    </td>
                               <% end %>
                                 </tr>
                             <% end %>

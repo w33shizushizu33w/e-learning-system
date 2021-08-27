@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
       flash[:success] = "Saved Successfully"
       redirect_to categories_path
     else
-      flash[:danger] = "Creating failed"
+      flash[:danger] = @category.errors.full_messages.to_sentence
       render "create"
     end
   end
@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    Category.find_by(params[:id]).destroy
+    Category.find(params[:id]).destroy
     redirect_to categories_path
   end
 

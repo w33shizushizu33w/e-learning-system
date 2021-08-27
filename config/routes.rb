@@ -4,9 +4,14 @@ Rails.application.routes.draw do
   resources :categories
   resources :lessons
   resources :words
+  resources :answers
 
   resources :categories do
-      resources :words
+    resources :words
+  end
+
+  resources :lessons do
+    resources :answers
   end
 
   root "static_pages#home"

@@ -1,0 +1,34 @@
+<%= provide(:title, "Answer") %>
+<div>
+    <h1 class="text-center mt-4"><%= @category[0] %> </h1>
+    <p class="text-center">Select correct answer</p>
+</div>
+
+<div class="container card text-center mt-4">
+    
+    <% @word.each do |w| %>
+    <div class="card-header">
+      <h4 class="card-title"><%= w.content %></h4>
+    </div>
+    <div class="card-body card text-center">
+        <%= form_for(@answers) do |f| %>
+            <%= f.text_field :lesson_id, value: params[:lesson_id] %>
+            <%= f.text_field :word_id, value: w.id %>
+            <% w.choices.each do |choice| %>
+                <%= f.hidden_field :choice_id, value: choice.id %>
+                <div class="form-check">
+                    <%= f.radio_button :choice_id, choice.id, required: 'required' %>
+                    <label class="form-check-label" for="exampleRadios1">
+                        <%= choice.content %>
+                    </label>
+                </div>
+            <% end %>            
+            <div class="text-center mt-4">
+                <%= f.submit "Submit", class: "btn btn-primary"  %>
+            </div>
+        <% end %>
+    </div>
+    <% end %>
+</div>
+
+

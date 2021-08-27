@@ -10,17 +10,13 @@ class WordsController < ApplicationController
       flash[:success] = "Saved Successfully"
       redirect_to category_words_path(@word.category_id)
     else
-      flash[:danger] = "Creating failed"
+      flash[:danger] = @word.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)
     end
   end
 
   def index
     @category = Category.find(params[:category_id])
-    @word = Word.where("category_id = @category.id")
-    @question = Category.joins("JOIN categories ON words.category_id = categories.id")
-                        .select("*, words.content")
-                        .where("content = 1")
     @word = Word.paginate(page: params[:page], per_page: 5 )
   end
 
@@ -29,12 +25,12 @@ class WordsController < ApplicationController
   end
 
   def update
-    @word = Word.find_by(params[:id])
+    @word = Word.find(params[:id])
     if @word.update_attributes(word_params)
       flash[:success] = "Saved Successfully"
       redirect_to category_words_path(@word.category_id)
     else
-      flash[:danger] = "Editing failed"
+      flash[:danger] = @word.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)
     end
   end

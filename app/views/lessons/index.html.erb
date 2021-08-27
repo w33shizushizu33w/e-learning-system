@@ -11,23 +11,34 @@
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-    <div class="row">
-      <% @category.each do |category| %>
-      <div class="card text-center mx-auto my-3" style="width: 18rem;">
-        <h5 class="card-header"><%= category.title %></h5>
-        <div class="card-body">
-          <h5 class="card-text"><%= category.description %></h5>
-          <div class="text-right mt-3">
-            <%= link_to "Start lesson", href="#", class: "btn btn-primary" %>
-          </div>
+  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab"> 
+    <% @category.each do |category| %>
+        <div class="row">
+            <%= form_for @lesson do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :result, value: true %>
+                <%= f.hidden_field :category_id, value: category.id %>
+                <div class="card text-center mx-auto my-3" style="width: 18rem;">
+                <h5 class="card-header"><%= category.title %></h5>
+                    <div class="card-body">
+                        <h5 class="card-text"><%= category.description %></h5>
+                        <% if completed_lesson?(category.id) == false %>
+                        <div class="text-right mt-3">
+                            <%= f.submit "Start lesson", class: "btn btn-primary" %>
+                        </div>
+                        <% else %>
+                        <div class="text-right mt-3">
+                            <%= link_to raw("<i class='fa fa-eye'> </i> View Results"), lesson_path(finished_lesson(category.id)), class: "btn btn-primary" %>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
         </div>
-        </div>
-      <% end %>
-      </div>
-      <div class="row d-flex justify-content-center">
+    <% end %>
+    <div class="row d-flex justify-content-center">
         <%= will_paginate @category %>
-      </div>    
+    </div>    
     </div>
     <div class="tab-pane fade" id="learned" role="tabpanel" aria-labelledby="learned-tab">
       <div class="row">
@@ -37,7 +48,7 @@
             <div class="card-body">
               <h5 class="card-text"><%= learned.description %></h5>
                 <div class="text-right mt-3">
-                  <%= link_to "Start lesson", class: "btn btn-primary" %>
+                  <%= link_to "Start lesson", href="#", class: "btn btn-primary" %>
                 </div>
             </div>
           </div>
